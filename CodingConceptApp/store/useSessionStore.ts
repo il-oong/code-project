@@ -81,6 +81,7 @@ type SessionState = {
   isSoundOn: boolean; // 사운드 상태 추가
   nextNotificationTime: string; // 다음 알림 시간 추가
   quizHistory: { quizId: string; correct: boolean; tags: string[]; timestamp: number }[]; // 퀴즈 기록 추가
+  totalDays: number; // 전체 Day 수 추가
   
   start: (dayIndex: number) => Promise<Card[]>; // 반환 타입 수정
   nextCard: () => void;
@@ -97,6 +98,7 @@ type SessionState = {
   toggleSound: () => void; // 사운드 토글 액션 추가
   setNextNotificationTime: (time: string) => void; // 다음 알림 시간 설정 액션 추가
   addQuizResultToHistory: (quizId: string, correct: boolean, tags: string[]) => void; // 퀴즈 기록 추가 액션
+  resetCards: () => void; // 카드 리셋 액션 추가
 };
 
 export const useSessionStore = create<SessionState>((set, get) => ({
@@ -113,12 +115,13 @@ export const useSessionStore = create<SessionState>((set, get) => ({
   isSoundOn: true, // 사운드 초기화
   nextNotificationTime: "내일 오전 9시", // 다음 알림 시간 초기화
   quizHistory: [], // 퀴즈 기록 초기화
+  totalDays: Object.keys(lessonContents).length, // 전체 Day 수 계산
 
   start: async (newDayIndex: number): Promise<Card[]> => {
-    const { dayIndex: currentDayIndex } = get();
-    if (currentDayIndex !== null && currentDayIndex === newDayIndex) {
+    const { dayIndex: currentDayIndex, cards } = get();
+    if (currentDayIndex === newDayIndex && cards.length > 0) {
       console.log(`Session for Day ${newDayIndex} is already active. Skipping initialization.`);
-      return get().cards; // 이미 세션이 활성화되어 있으면 현재 카드 반환
+      return cards;
     }
 
     const loadedCards = lessonContents[newDayIndex] || [];
@@ -216,8 +219,9 @@ export const useSessionStore = create<SessionState>((set, get) => ({
 
   finish: async () => {
     // TODO: 성과 저장 및 SRS 큐 생성 로직 구현 (MVP 이후)
+    // The `start` function is responsible for resetting the state for the new day,
+    // so we don't reset the state here to avoid race conditions.
     console.log("Session finished!");
-    set({ currentCardIndex: 0, answers: {}, isQuizSubmitted: false, quizResult: null, currentLabResult: null }); // dayIndex와 cards는 start에서 업데이트되므로 여기서 초기화하지 않음
   },
 
   updateSrsItem: (itemId: string, quality: number) => {
@@ -258,5 +262,9 @@ export const useSessionStore = create<SessionState>((set, get) => ({
     set((state) => ({
       quizHistory: [...state.quizHistory, { quizId, correct, tags, timestamp: Date.now() }],
     }));
+  },
+
+  resetCards: () => {
+    set({ cards: [], currentCardIndex: 0 });
   },
 }));

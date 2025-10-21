@@ -5,6 +5,12 @@ import { Card, Quiz, Lab } from '../../types'; // Quiz, Lab 타입 추가 임포
 
 import { Text as RNText } from 'react-native';
 
+// Prop view to filter out responder props and prevent warnings
+const PropFilteringView = (props: any) => {
+  const { onStartShouldSetResponder, ...rest } = props;
+  return <View {...rest} />;
+};
+
 // 1) 고정 폭 정의
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const H_PADDING = 20;
@@ -86,16 +92,16 @@ export default function CardStack({ cards, onCardChange, currentIndex, onQuizAns
 
       switch (item.kind) {
         case 'story':
-          return <View style={containerStyle}><StoryCard md={item.md || ''} /></View>;
+          return <PropFilteringView style={containerStyle}><StoryCard md={item.md || ''} /></PropFilteringView>;
         case 'concept':
-          return <View style={containerStyle}><ConceptCard md={item.md || ''} /></View>;
+          return <PropFilteringView style={containerStyle}><ConceptCard md={item.md || ''} /></PropFilteringView>;
         case 'example':
-          return <View style={containerStyle}><ExampleCard md={item.md || ''} /></View>;
+          return <PropFilteringView style={containerStyle}><ExampleCard md={item.md || ''} /></PropFilteringView>;
         case 'tip':
-          return <View style={containerStyle}><TipCard md={item.md || ''} /></View>;
+          return <PropFilteringView style={containerStyle}><TipCard md={item.md || ''} /></PropFilteringView>;
         case 'quiz':
           return (
-            <View style={containerStyle}>
+            <PropFilteringView style={containerStyle}>
               {item.quizData ? (
                 <QuizCard
                   quizData={item.quizData}
@@ -105,18 +111,18 @@ export default function CardStack({ cards, onCardChange, currentIndex, onQuizAns
               ) : (
                 <RNText>Quiz data not found</RNText>
               )}
-            </View>
+            </PropFilteringView>
           );
         case 'lab':
           return (
-            <View style={containerStyle}>
+            <PropFilteringView style={containerStyle}>
               {item.labData ? <LabCard labData={item.labData} /> : <RNText>Lab data not found</RNText>}
-            </View>
+            </PropFilteringView>
           );
         case 'review':
-          return <View style={containerStyle}><ReviewCard md={item.md || ''} /></View>;
+          return <PropFilteringView style={containerStyle}><ReviewCard md={item.md || ''} /></PropFilteringView>;
         default:
-          return <View style={containerStyle}><RNText>Unknown Card Kind</RNText></View>;
+          return <PropFilteringView style={containerStyle}><RNText>Unknown Card Kind</RNText></PropFilteringView>;
       }
     },
     [onQuizAnswer, quizAnswers, cards] // 의존성 배열에 추가

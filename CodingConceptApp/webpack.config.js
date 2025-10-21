@@ -1,4 +1,4 @@
-const createExpoWebpackConfigAsync = require('@expo/webpack-config');
+const createExpoWebpackConfigAsync = require("@expo/webpack-config");
 
 module.exports = async function (env, argv) {
   const config = await createExpoWebpackConfigAsync(env, argv);
@@ -13,14 +13,14 @@ module.exports = async function (env, argv) {
       fullySpecified: false,
     },
     use: {
-      loader: 'babel-loader',
+      loader: "babel-loader",
       options: {
-        presets: ['babel-preset-expo'],
+        presets: ["babel-preset-expo"],
         plugins: [
           // Required for Expo Router
-          'expo-router/babel',
+          "expo-router/babel",
           // Add this plugin to support import.meta
-          '@babel/plugin-syntax-import-meta',
+          "@babel/plugin-syntax-import-meta",
         ],
       },
     },
