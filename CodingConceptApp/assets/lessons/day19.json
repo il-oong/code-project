@@ -1,0 +1,42 @@
+[
+  {
+    "id": "day19-story-01",
+    "kind": "story",
+    "md": "# Day 19: 변수가 살아있는 범위와 특별한 함수, 스코프와 클로저\n\n우리가 어떤 물건을 놓을 수 있는 공간이 정해져 있듯이, 프로그래밍에서도 변수가 어디에서 사용될 수 있는지 그 '범위'가 정해져 있습니다. 이 범위를 '스코프'라고 합니다. 그리고 이 스코프를 활용하여 특별한 기능을 하는 함수를 만들 수 있는데, 이것이 바로 '클로저'입니다."
+  },
+  {
+    "id": "day19-concept-01",
+    "kind": "concept",
+    "md": "# 스코프 (Scope)\n\n**스코프**는 변수나 함수에 접근할 수 있는 유효 범위를 의미합니다. JavaScript에는 여러 종류의 스코프가 있습니다.\n\n- **전역 스코프 (Global Scope):** 코드의 어느 곳에서든 접근할 수 있는 최상위 스코프입니다.\n- **함수 스코프 (Function Scope):** 함수 내부에서 선언된 변수는 해당 함수 내에서만 접근할 수 있습니다.\n- **블록 스코프 (Block Scope):** `let` 또는 `const` 키워드로 선언된 변수는 `{}` 중괄호로 묶인 블록 내에서만 접근할 수 있습니다. (ES6부터 도입)"
+  },
+  {
+    "id": "day19-example-01",
+    "kind": "example",
+    "md": "# 스코프 예시\n\n다양한 스코프의 동작을 확인해 볼까요?\n\n```javascript\nlet globalVar = \"전역 변수\";\n\nfunction outerFunction() {\n  let outerVar = \"외부 함수 변수\";\n\n  if (true) {\n    let blockVar = \"블록 변수\";\n    console.log(globalVar); // 접근 가능\n    console.log(outerVar);  // 접근 가능\n    console.log(blockVar);  // 접근 가능\n  }\n\n  // console.log(blockVar); // 오류: blockVar는 블록 스코프 밖에서 접근 불가\n\n  function innerFunction() {\n    let innerVar = \"내부 함수 변수\";\n    console.log(globalVar); // 접근 가능\n    console.log(outerVar);  // 접근 가능\n    console.log(innerVar);  // 접근 가능\n  }\n\n  innerFunction();\n}\n\nouterFunction();\n\nconsole.log(globalVar); // 접근 가능\n// console.log(outerVar);  // 오류: outerVar는 함수 스코프 밖에서 접근 불가\n```\n\n변수는 자신이 선언된 스코프와 그 하위 스코프에서만 접근할 수 있습니다."
+  },
+  {
+    "id": "day19-concept-02",
+    "kind": "concept",
+    "md": "# 클로저 (Closure)\n\n**클로저**는 함수와 그 함수가 선언될 당시의 어휘적(lexical) 환경의 조합입니다. 즉, 내부 함수가 외부 함수의 스코프에 있는 변수에 접근할 수 있도록 해주는 기능입니다. 외부 함수가 실행을 마쳐도 내부 함수가 외부 함수의 변수를 기억하고 접근할 수 있게 됩니다.\n\n- **어휘적 환경:** 함수가 정의된 물리적인 위치에 따라 결정되는 스코프입니다.\n- **클로저의 활용:** 비공개 변수(private variable) 흉내내기, 함수 팩토리, 상태 유지 등 다양한 패턴에 사용됩니다."
+  },
+  {
+    "id": "day19-example-02",
+    "kind": "example",
+    "md": "# 클로저 예시\n\n카운터 기능을 하는 클로저를 만들어 볼까요?\n\n```javascript\nfunction makeCounter() {\n  let count = 0; // 외부 함수의 지역 변수\n\n  return function() { // 내부 함수 (클로저)\n    count = count + 1;\n    return count;\n  };\n}\n\nconst counter1 = makeCounter();\nconsole.log(counter1()); // 결과: 1\nconsole.log(counter1()); // 결과: 2\n\nconst counter2 = makeCounter(); // 새로운 어휘적 환경을 가진 새로운 클로저 생성\nconsole.log(counter2()); // 결과: 1\nconsole.log(counter1()); // 결과: 3 (counter1은 여전히 자신의 count를 기억)\n```\n\n`makeCounter` 함수가 실행을 마쳐도 `count` 변수는 `counter1`과 `counter2` 클로저에 의해 기억되고 유지됩니다."
+  },
+  {
+    "id": "day19-quiz-01",
+    "kind": "quiz",
+    "quizId": "quiz-day19-01"
+  },
+  {
+    "id": "day19-lab-01",
+    "kind": "lab",
+    "labId": "lab-day19-01"
+  },
+  {
+    "id": "day19-review-01",
+    "kind": "review",
+    "md": "# Day 19 복습\n\n오늘은 스코프의 개념과 종류, 그리고 클로저의 동작 원리와 활용 방법에 대해 학습했습니다. 스코프와 클로저는 JavaScript의 강력한 기능 중 하나이며, 이를 이해하는 것은 복잡한 프로그램을 설계하고 디버깅하는 데 매우 중요합니다.\n\n다음 시간에는 '호이스팅'에 대해 알아보겠습니다!"
+  }
+]

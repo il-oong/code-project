@@ -1,0 +1,42 @@
+[
+  {
+    "id": "day16-story-01",
+    "kind": "story",
+    "md": "# Day 16: 기다리지 않는 프로그래밍, 비동기\n\n우리가 식당에서 음식을 주문할 때, 음식이 나올 때까지 아무것도 하지 않고 기다리는 대신 다른 일을 하거나 대화를 나눌 수 있습니다. 프로그래밍에서도 이와 유사하게, 시간이 오래 걸리는 작업(예: 네트워크 요청, 파일 읽기)이 완료될 때까지 프로그램 전체가 멈추지 않고 다른 작업을 계속할 수 있도록 하는 방식이 있는데, 이것이 바로 '비동기 프로그래밍'입니다."
+  },
+  {
+    "id": "day16-concept-01",
+    "kind": "concept",
+    "md": "# 비동기 프로그래밍 (Asynchronous Programming)\n\n**비동기 프로그래밍**은 특정 작업의 완료를 기다리지 않고 다음 작업을 즉시 실행하는 프로그래밍 방식입니다. 시간이 오래 걸리는 작업을 백그라운드에서 처리하고, 작업이 완료되면 결과를 알려주는 방식으로 동작합니다.\n\n- **동기 (Synchronous):** 작업이 순차적으로 진행되며, 한 작업이 완료되어야 다음 작업이 시작됩니다.\n- **비동기 (Asynchronous):** 작업이 동시에 시작될 수 있으며, 완료 순서와 관계없이 다음 작업이 진행됩니다."
+  },
+  {
+    "id": "day16-example-01",
+    "kind": "example",
+    "md": "# 동기 vs 비동기 예시\n\n```javascript\n// 동기적 코드\nconsole.log(\"첫 번째 작업\");\nalert(\"잠시 기다려주세요...\"); // 사용자가 확인 버튼을 누를 때까지 다음 코드 실행 안됨\nconsole.log(\"두 번째 작업\");\n\n// 비동기적 코드 (setTimeout 사용)\nconsole.log(\"첫 번째 작업\");\nsetTimeout(() => {\n  console.log(\"시간이 오래 걸리는 작업 완료!\");\n}, 2000); // 2초 후에 실행되지만, 기다리지 않고 다음 코드 실행\nconsole.log(\"두 번째 작업\");\n\n// 결과:\n// 첫 번째 작업\n// 두 번째 작업\n// (2초 후) 시간이 오래 걸리는 작업 완료!\n```\n\n비동기 코드는 프로그램의 응답성을 높여 사용자 경험을 개선하는 데 중요합니다."
+  },
+  {
+    "id": "day16-concept-02",
+    "kind": "concept",
+    "md": "# 비동기 처리 패턴: 콜백, Promise, Async/Await\n\nJavaScript에서 비동기 작업을 처리하는 주요 패턴은 다음과 같습니다.\n\n- **콜백 (Callback):** 비동기 작업이 완료된 후 실행될 함수를 다른 함수의 인수로 전달하는 방식입니다. (콜백 지옥 문제 발생 가능)\n- **Promise:** 비동기 작업의 최종 완료 또는 실패를 나타내는 객체입니다. `.then()`, `.catch()`, `.finally()` 메서드를 사용하여 결과를 처리합니다.\n- **Async/Await:** Promise를 더 쉽게 사용할 수 있도록 해주는 문법입니다. `async` 함수는 Promise를 반환하며, `await` 키워드는 Promise가 해결될 때까지 함수의 실행을 일시 중지합니다."
+  },
+  {
+    "id": "day16-example-02",
+    "kind": "example",
+    "md": "# Promise와 Async/Await 예시\n\n```javascript\n// Promise 사용 예시\nfunction fetchData() {\n  return new Promise(resolve => {\n    setTimeout(() => {\n      resolve(\"데이터 로드 완료 (Promise)!\");\n    }, 1000);\n  });\n}\n\nfetchData().then(message => {\n  console.log(message);\n});\n\n// Async/Await 사용 예시\nasync function loadData() {\n  console.log(\"데이터 로드 시작...\");\n  const message = await fetchData(); // fetchData Promise가 해결될 때까지 기다림\n  console.log(message + \" (Async/Await)\");\n  console.log(\"모든 데이터 로드 완료!\");\n}\n\nloadData();\n\n// 예상 결과 (시간차를 두고 출력):\n// 데이터 로드 시작...\n// 데이터 로드 완료 (Promise)!\n// 데이터 로드 완료 (Async/Await)\n// 모든 데이터 로드 완료!\n```\n\nPromise와 Async/Await는 비동기 코드를 더 깔끔하고 읽기 쉽게 만들어 줍니다."
+  },
+  {
+    "id": "day16-quiz-01",
+    "kind": "quiz",
+    "quizId": "quiz-day16-01"
+  },
+  {
+    "id": "day16-lab-01",
+    "kind": "lab",
+    "labId": "lab-day16-01"
+  },
+  {
+    "id": "day16-review-01",
+    "kind": "review",
+    "md": "# Day 16 복습\n\n오늘은 비동기 프로그래밍의 개념과 콜백, Promise, Async/Await와 같은 주요 비동기 처리 패턴에 대해 학습했습니다. 비동기 프로그래밍은 웹 애플리케이션에서 사용자 경험을 향상시키고 효율적인 자원 관리를 가능하게 하는 중요한 기법입니다.\n\n다음 시간에는 '오류 처리'에 대해 알아보겠습니다!"
+  }
+]

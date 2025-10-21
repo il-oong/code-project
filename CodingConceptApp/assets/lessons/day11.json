@@ -1,0 +1,42 @@
+[
+  {
+    "id": "day11-story-01",
+    "kind": "story",
+    "md": "# Day 11: 코드 묶음, 함수\n\n프로그래밍에서 함수는 특정 작업을 수행하는 코드 블록을 의미합니다. 마치 요리 레시피처럼, 필요한 재료(입력)를 받아 정해진 과정(코드)을 거쳐 결과물(출력)을 만들어냅니다. 함수를 사용하면 코드를 재사용하고, 프로그램을 더 체계적으로 구성할 수 있습니다."
+  },
+  {
+    "id": "day11-concept-01",
+    "kind": "concept",
+    "md": "# 함수 (Function)\n\n**함수**는 특정 작업을 수행하도록 설계된 독립적인 코드 블록입니다. 함수는 입력(매개변수)을 받아 처리하고, 결과(반환 값)를 내보낼 수 있습니다.\n\n- **함수 선언:** `function` 키워드를 사용하여 함수를 정의합니다.\n- **매개변수 (Parameter):** 함수가 호출될 때 전달받을 값을 위한 변수입니다.\n- **인수 (Argument):** 함수를 호출할 때 실제로 전달하는 값입니다.\n- **반환 값 (Return Value):** 함수가 작업을 마친 후 돌려주는 결과 값입니다. `return` 키워드를 사용합니다."
+  },
+  {
+    "id": "day11-example-01",
+    "kind": "example",
+    "md": "# 함수 선언 및 호출 예시\n\n두 숫자를 더하는 함수를 만들어 볼까요?\n\n```javascript\nfunction add(a, b) {\n  return a + b;\n}\n\nlet result = add(5, 3);\nconsole.log(result);\n\n// 결과:\n// 8\n```\n\n`add` 함수는 `a`와 `b` 두 개의 매개변수를 받아 더한 후 그 결과를 반환합니다. `add(5, 3)`은 함수를 호출하면서 5와 3을 인수로 전달하는 것입니다."
+  },
+  {
+    "id": "day11-concept-02",
+    "kind": "concept",
+    "md": "# 함수 표현식과 화살표 함수\n\n함수를 정의하는 다른 방법으로는 **함수 표현식**과 **화살표 함수**가 있습니다.\n\n- **함수 표현식:** 함수를 변수에 할당하는 방식으로 정의합니다.\n- **화살표 함수 (Arrow Function):** ES6에서 도입된 간결한 함수 문법으로, 주로 익명 함수를 정의할 때 사용됩니다."
+  },
+  {
+    "id": "day11-example-02",
+    "kind": "example",
+    "md": "# 함수 표현식과 화살표 함수 예시\n\n```javascript\n// 함수 표현식\nconst multiply = function(a, b) {\n  return a * b;\n};\n\nconsole.log(multiply(4, 2)); // 결과: 8\n\n// 화살표 함수\nconst subtract = (a, b) => a - b;\n\nconsole.log(subtract(10, 4)); // 결과: 6\n\n// 매개변수가 하나일 경우 괄호 생략 가능\nconst square = x => x * x;\n\nconsole.log(square(5)); // 결과: 25\n```\n\n함수 표현식과 화살표 함수는 상황에 따라 유용하게 사용될 수 있습니다."
+  },
+  {
+    "id": "day11-quiz-01",
+    "kind": "quiz",
+    "quizId": "quiz-day11-01"
+  },
+  {
+    "id": "day11-lab-01",
+    "kind": "lab",
+    "labId": "lab-day11-01"
+  },
+  {
+    "id": "day11-review-01",
+    "kind": "review",
+    "md": "# Day 11 복습\n\n오늘은 함수의 개념, 함수 선언, 매개변수, 반환 값, 그리고 함수 표현식과 화살표 함수에 대해 학습했습니다. 함수는 코드의 재사용성을 높이고 프로그램을 모듈화하는 데 중요한 역할을 합니다.\n\n다음 시간에는 '객체'에 대해 알아보겠습니다!"
+  }
+]

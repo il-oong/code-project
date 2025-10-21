@@ -1,0 +1,42 @@
+[
+  {
+    "id": "day18-story-01",
+    "kind": "story",
+    "md": "# Day 18: 정보의 종류와 정리 방법, 데이터 타입과 자료구조\n\n우리가 일상생활에서 다양한 종류의 정보(숫자, 글자, 그림 등)를 다루듯이, 프로그래밍에서도 여러 형태의 데이터를 사용합니다. 이 데이터들을 효율적으로 저장하고 관리하기 위해 '데이터 타입'과 '자료구조'라는 개념이 필요합니다. 이는 마치 물건의 종류에 따라 적절한 보관함에 정리하는 것과 같습니다."
+  },
+  {
+    "id": "day18-concept-01",
+    "kind": "concept",
+    "md": "# 데이터 타입 (Data Type)\n\n**데이터 타입**은 프로그래밍 언어에서 다룰 수 있는 데이터의 종류를 의미합니다. JavaScript는 크게 두 가지 타입으로 나뉩니다.\n\n- **원시 타입 (Primitive Types):** 하나의 값만 나타내는 불변(immutable) 데이터입니다. `number`, `string`, `boolean`, `null`, `undefined`, `symbol`, `bigint`가 있습니다.\n  - `number`: 숫자 (정수 및 부동 소수점)\n  - `string`: 텍스트 (문자열)\n  - `boolean`: 참/거짓 (`true` 또는 `false`)\n  - `null`: 값이 없음을 나타내는 특별한 값\n  - `undefined`: 값이 할당되지 않았음을 나타내는 값\n  - `symbol`: 고유하고 변경 불가능한 값 (ES6)\n  - `bigint`: 매우 큰 정수 (ES2020)\n- **객체 타입 (Object Type):** 여러 값을 포함할 수 있는 변경 가능한(mutable) 데이터입니다. `object`가 대표적이며, 함수, 배열 등도 객체의 일종입니다."
+  },
+  {
+    "id": "day18-example-01",
+    "kind": "example",
+    "md": "# 데이터 타입 예시\n\n다양한 데이터 타입을 확인해 볼까요?\n\n```javascript\nlet num = 123;           // number\nlet str = \"Hello\";       // string\nlet bool = true;         // boolean\nlet nothing = null;      // object (특별한 경우)\nlet undef = undefined;   // undefined\nlet sym = Symbol('id');  // symbol\nlet bigNum = 12345678901234567890n; // bigint\n\nlet obj = { name: \"Alice\" }; // object\nlet arr = [1, 2, 3];         // object (배열도 객체)\nlet func = function() {};    // function (함수도 객체)\n\nconsole.log(typeof num);     // 결과: number\nconsole.log(typeof str);     // 결과: string\nconsole.log(typeof bool);    // 결과: boolean\nconsole.log(typeof nothing); // 결과: object\nconsole.log(typeof undef);   // 결과: undefined\nconsole.log(typeof sym);     // 결과: symbol\nconsole.log(typeof bigNum);  // 결과: bigint\nconsole.log(typeof obj);     // 결과: object\nconsole.log(typeof arr);     // 결과: object\nconsole.log(typeof func);    // 결과: function\n```\n\n`typeof` 연산자를 사용하여 변수의 데이터 타입을 확인할 수 있습니다."
+  },
+  {
+    "id": "day18-concept-02",
+    "kind": "concept",
+    "md": "# 자료구조 (Data Structure)\n\n**자료구조**는 데이터를 효율적으로 저장하고 관리하기 위한 다양한 방법과 형태를 의미합니다. 어떤 자료구조를 선택하느냐에 따라 프로그램의 성능과 효율성이 크게 달라질 수 있습니다.\n\n- **배열 (Array):** 여러 데이터를 순서대로 저장하는 가장 기본적인 자료구조입니다. 인덱스를 통해 각 요소에 접근합니다.\n- **객체 (Object):** `키(key): 값(value)` 쌍으로 데이터를 저장하는 자료구조입니다. 키를 통해 값에 접근합니다.\n- **맵 (Map):** `키: 값` 쌍을 저장하지만, 객체보다 더 다양한 데이터 타입을 키로 사용할 수 있고, 삽입 순서를 유지합니다.\n- **셋 (Set):** 중복되지 않는 유일한 값들을 저장하는 자료구조입니다."
+  },
+  {
+    "id": "day18-example-02",
+    "kind": "example",
+    "md": "# 자료구조 예시\n\n다양한 자료구조를 사용해 볼까요?\n\n```javascript\n// 배열 (Array)\nlet fruits = [\"사과\", \"바나나\", \"오렌지\"];\nconsole.log(fruits[0]); // 결과: 사과\n\n// 객체 (Object)\nlet user = { name: \"Alice\", age: 25 };\nconsole.log(user.name); // 결과: Alice\n\n// 맵 (Map)\nlet myMap = new Map();\nmyMap.set(\"name\", \"Bob\");\nmyMap.set(1, \"One\");\nconsole.log(myMap.get(\"name\")); // 결과: Bob\n\n// 셋 (Set)\nlet mySet = new Set();\nmySet.add(1);\nmySet.add(2);\nmySet.add(1); // 중복은 추가되지 않음\nconsole.log(mySet.size); // 결과: 2\nconsole.log(mySet.has(1)); // 결과: true\n```\n\n각 자료구조는 특정 상황에서 데이터를 효율적으로 다루는 데 유용합니다."
+  },
+  {
+    "id": "day18-quiz-01",
+    "kind": "quiz",
+    "quizId": "quiz-day18-01"
+  },
+  {
+    "id": "day18-lab-01",
+    "kind": "lab",
+    "labId": "lab-day18-01"
+  },
+  {
+    "id": "day18-review-01",
+    "kind": "review",
+    "md": "# Day 18 복습\n\n오늘은 데이터 타입의 종류와 자료구조의 개념, 그리고 JavaScript에서 사용되는 주요 데이터 타입과 자료구조에 대해 학습했습니다. 데이터 타입과 자료구조를 이해하는 것은 효율적이고 안정적인 프로그램을 만드는 데 매우 중요합니다.\n\n다음 시간에는 '스코프와 클로저'에 대해 알아보겠습니다!"
+  }
+]

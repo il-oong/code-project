@@ -1,0 +1,42 @@
+[
+  {
+    "id": "day26-story-01",
+    "kind": "story",
+    "md": "# Day 26: 효율적인 코드 개발을 위한 도구들, 모던 JavaScript 개발 환경\n\n현대의 JavaScript 개발은 단순히 코드를 작성하는 것을 넘어, 다양한 도구와 기술을 활용하여 효율성과 생산성을 극대화합니다. 마치 전문 목수가 다양한 연장을 사용하여 정교한 가구를 만들듯이, JavaScript 개발자도 '모던 개발 환경'을 구축하여 더 나은 코드를 만들고 관리합니다."
+  },
+  {
+    "id": "day26-concept-01",
+    "kind": "concept",
+    "md": "# 모던 JavaScript 개발 환경의 필요성\n\nJavaScript는 빠르게 발전하고 있으며, 새로운 문법(ES6+)과 기능들이 계속 추가되고 있습니다. 하지만 모든 브라우저나 환경이 최신 문법을 즉시 지원하는 것은 아닙니다. 또한, 복잡한 프로젝트에서는 여러 파일로 나뉜 코드를 효율적으로 관리하고 배포해야 합니다.\n\n- **호환성 문제:** 최신 JavaScript 문법을 구형 브라우저에서도 동작하게 해야 합니다.\n- **모듈 관리:** `import`, `export`로 나뉜 여러 모듈 파일을 하나로 합쳐야 합니다.\n- **성능 최적화:** 코드 크기를 줄이고 로딩 속도를 개선해야 합니다.\n- **코드 품질:** 일관된 코드 스타일을 유지하고 잠재적인 오류를 미리 찾아야 합니다."
+  },
+  {
+    "id": "day26-example-01",
+    "kind": "example",
+    "md": "# 트랜스파일러 (Transpiler): Babel\n\n**트랜스파일러**는 최신 JavaScript 문법을 구형 브라우저에서도 이해할 수 있는 이전 버전의 JavaScript 문법으로 변환해주는 도구입니다. 대표적으로 **Babel**이 있습니다.\n\n```javascript\n// ES6+ 코드 (input.js)\nconst greet = (name) => `Hello, ${name}!`;\n\n// Babel로 트랜스파일링 후 (output.js)\n\"use strict\";\n\nvar greet = function greet(name) {\n  return \"Hello, \".concat(name, \"!\");\n};\n```\n\nBabel을 사용하면 개발자는 항상 최신 문법으로 코드를 작성할 수 있으며, 호환성 문제는 Babel이 처리해줍니다."
+  },
+  {
+    "id": "day26-concept-02",
+    "kind": "concept",
+    "md": "# 번들러 (Bundler): Webpack, Parcel\n\n**번들러**는 여러 JavaScript 모듈 파일(및 CSS, 이미지 등)을 하나 또는 몇 개의 파일로 묶어(번들링)주는 도구입니다. 이를 통해 웹 페이지 로딩 시 발생하는 네트워크 요청 수를 줄여 성능을 향상시키고, 모듈 간의 의존성을 관리합니다. 대표적으로 **Webpack**과 **Parcel**이 있습니다.\n\n- **Webpack:** 강력하고 유연하지만 설정이 복잡할 수 있습니다.\n- **Parcel:** 설정 없이 바로 사용할 수 있는(zero-configuration) 번들러로, 사용하기 쉽습니다."
+  },
+  {
+    "id": "day26-example-02",
+    "kind": "example",
+    "md": "# 패키지 매니저 (Package Manager): npm, Yarn\n\n**패키지 매니저**는 프로젝트에서 필요한 외부 라이브러리(패키지)를 설치, 업데이트, 삭제하는 등 의존성을 관리하는 도구입니다. 대표적으로 **npm (Node Package Manager)**과 **Yarn**이 있습니다.\n\n```bash\n# npm을 사용하여 React 라이브러리 설치\nnpm install react\n\n# Yarn을 사용하여 Lodash 라이브러리 설치\nyarn add lodash\n\n# 프로젝트의 모든 의존성 설치\nnpm install\n# 또는\nyarn\n```\n\n패키지 매니저는 수많은 오픈소스 라이브러리를 쉽게 활용할 수 있도록 도와줍니다."
+  },
+  {
+    "id": "day26-quiz-01",
+    "kind": "quiz",
+    "quizId": "quiz-day26-01"
+  },
+  {
+    "id": "day26-lab-01",
+    "kind": "lab",
+    "labId": "lab-day26-01"
+  },
+  {
+    "id": "day26-review-01",
+    "kind": "review",
+    "md": "# Day 26 복습\n\n오늘은 모던 JavaScript 개발 환경의 필요성과 주요 도구들(트랜스파일러, 번들러, 패키지 매니저)에 대해 학습했습니다. 이러한 도구들은 최신 JavaScript 문법을 사용하고, 코드를 효율적으로 관리하며, 성능을 최적화하는 데 필수적입니다.\n\n다음 시간에는 '테스팅'에 대해 알아보겠습니다!"
+  }
+]

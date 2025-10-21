@@ -1,0 +1,27 @@
+[
+  {
+    "id": "day02-story-01",
+    "kind": "story",
+    "md": "# Day 2: 자료형\n\n오늘은 프로그래밍의 또 다른 기본 개념인 '자료형'에 대해 알아보겠습니다. 자료형은 변수가 어떤 종류의 데이터를 저장하는지를 나타냅니다."
+  },
+  {
+    "id": "day02-concept-01",
+    "kind": "concept",
+    "md": "# 자료형 (Data Type)\n\n**자료형**은 프로그래밍 언어에서 다루는 데이터의 종류를 의미합니다. 숫자, 문자열, 불리언 등이 있습니다.\n\n**예시:**\n```javascript\nlet num = 123; // 숫자형\nlet text = \"Hello\"; // 문자열형\nlet isActive = true; // 불리언형\n```"
+  },
+  {
+    "id": "day02-quiz-01",
+    "kind": "quiz",
+    "quizId": "quiz-day02-01"
+  },
+  {
+    "id": "day02-lab-01",
+    "kind": "lab",
+    "labId": "lab-day02-01"
+  },
+  {
+    "id": "day02-review-01",
+    "kind": "review",
+    "md": "# Day 2 복습\n\n오늘은 자료형의 개념과 종류에 대해 학습했습니다. 다음 시간에는 '연산자'에 대해 알아보겠습니다!"
+  }
+]

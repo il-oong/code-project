@@ -1,0 +1,32 @@
+[
+  {
+    "id": "day20-story-01",
+    "kind": "story",
+    "md": "# Day 20: 코드가 실행되는 순서의 비밀, 호이스팅\n\n우리가 어떤 물건을 사용하기 전에 미리 준비해 두는 것처럼, JavaScript에서도 코드가 실행되기 전에 변수나 함수의 선언이 미리 처리되는 현상이 있습니다. 이것을 '호이스팅'이라고 부르는데, 마치 선언문이 코드의 맨 위로 끌어올려지는 것처럼 보입니다. 호이스팅을 이해하면 코드가 예상과 다르게 동작하는 이유를 파악하는 데 도움이 됩니다."
+  },
+  {
+    "id": "day20-concept-01",
+    "kind": "concept",
+    "md": "# 호이스팅 (Hoisting)\n\n**호이스팅**은 JavaScript 인터프리터가 코드를 실행하기 전에 변수, 함수, 클래스 등의 선언을 해당 스코프의 맨 위로 끌어올리는 것처럼 보이는 현상입니다. 실제 코드가 물리적으로 이동하는 것은 아니지만, 선언이 미리 처리되어 유효 범위의 시작 부분에서 사용할 수 있게 됩니다.\n\n- **`var` 변수 호이스팅:** `var`로 선언된 변수는 선언과 함께 초기화(undefined로)도 호이스팅됩니다. 따라서 선언 전에 변수에 접근하면 `undefined` 값을 얻습니다.\n- **`function` 선언 호이스팅:** 함수 선언문은 함수 전체가 호이스팅됩니다. 따라서 선언 전에 함수를 호출할 수 있습니다.\n- **`let`, `const` 변수 및 `class` 선언 호이스팅:** 이들은 선언만 호이스팅되고 초기화는 되지 않습니다. 따라서 선언 전에 접근하면 '일시적 사각지대(Temporal Dead Zone, TDZ)'에 의해 `ReferenceError`가 발생합니다."
+  },
+  {
+    "id": "day20-example-01",
+    "kind": "example",
+    "md": "# 호이스팅 예시\n\n다양한 선언의 호이스팅 동작을 확인해 볼까요?\n\n```javascript\n// var 변수 호이스팅\nconsole.log(varVariable); // 결과: undefined (선언은 호이스팅, 초기화는 나중에)\nvar varVariable = \"var 변수\";\nconsole.log(varVariable); // 결과: var 변수\n\n// 함수 선언 호이스팅\nfunctionDeclaration(); // 결과: 함수 선언 호출됨 (함수 전체가 호이스팅)\nfunction functionDeclaration() {\n  console.log(\"함수 선언 호출됨\");\n}\n\n// let 변수 호이스팅 (TDZ)\n// console.log(letVariable); // ReferenceError: Cannot access 'letVariable' before initialization\nlet letVariable = \"let 변수\";\nconsole.log(letVariable); // 결과: let 변수\n\n// const 변수 호이스팅 (TDZ)\n// console.log(constVariable); // ReferenceError: Cannot access 'constVariable' before initialization\nconst constVariable = \"const 변수\";\nconsole.log(constVariable); // 결과: const 변수\n\n// 함수 표현식 (변수 호이스팅 규칙을 따름)\n// functionExpression(); // ReferenceError: functionExpression is not defined (var의 경우 undefined)\nvar functionExpression = function() {\n  console.log(\"함수 표현식 호출됨\");\n};\nfunctionExpression(); // 결과: 함수 표현식 호출됨\n```\n\n`var`와 `function` 선언은 비교적 자유롭게 호이스팅되지만, `let`, `const`, `class`는 엄격한 규칙을 따릅니다."
+  },
+  {
+    "id": "day20-quiz-01",
+    "kind": "quiz",
+    "quizId": "quiz-day20-01"
+  },
+  {
+    "id": "day20-lab-01",
+    "kind": "lab",
+    "labId": "lab-day20-01"
+  },
+  {
+    "id": "day20-review-01",
+    "kind": "review",
+    "md": "# Day 20 복습\n\n오늘은 JavaScript의 호이스팅 개념과 `var`, `let`, `const`, `function`, `class` 선언이 각각 어떻게 호이스팅되는지 학습했습니다. 호이스팅은 JavaScript 코드의 실행 흐름을 이해하는 데 매우 중요한 개념입니다.\n\n다음 시간에는 '실행 컨텍스트와 콜 스택'에 대해 알아보겠습니다!"
+  }
+]

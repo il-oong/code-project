@@ -1,0 +1,27 @@
+[
+  {
+    "id": "day05-story-01",
+    "kind": "story",
+    "md": "# Day 5: 함수\n\n오늘은 프로그래밍에서 매우 중요한 개념인 '함수'에 대해 알아보겠습니다. 함수는 특정 작업을 수행하는 코드 블록입니다."
+  },
+  {
+    "id": "day05-concept-01",
+    "kind": "concept",
+    "md": "# 함수 (Function)\n\n**함수**는 재사용 가능한 코드 블록으로, 특정 작업을 수행하도록 정의됩니다. 입력(매개변수)을 받아 처리하고 결과를 반환할 수 있습니다.\n\n**예시:**\n```javascript\nfunction greet(name) {\n  return \"Hello, \" + name + \"!\";\n}\n\nlet message = greet(\"World\"); // \"Hello, World!\"\n```"
+  },
+  {
+    "id": "day05-quiz-01",
+    "kind": "quiz",
+    "quizId": "quiz-day05-01"
+  },
+  {
+    "id": "day05-lab-01",
+    "kind": "lab",
+    "labId": "lab-day05-01"
+  },
+  {
+    "id": "day05-review-01",
+    "kind": "review",
+    "md": "# Day 5 복습\n\n오늘은 함수의 개념, 정의 방법, 그리고 호출 방법에 대해 학습했습니다. 다음 시간에는 '객체와 클래스'에 대해 알아보겠습니다!"
+  }
+]

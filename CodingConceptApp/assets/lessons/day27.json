@@ -1,0 +1,42 @@
+[
+  {
+    "id": "day27-story-01",
+    "kind": "story",
+    "md": "# Day 27: 코드의 품질을 확인하는 방법, 테스팅\n\n우리가 만든 제품이 제대로 작동하는지 확인하기 위해 테스트를 거치듯이, 프로그래밍에서도 작성한 코드가 예상대로 동작하고 오류가 없는지 확인하는 과정이 필요합니다. 이 과정을 '테스팅'이라고 합니다. 테스팅은 코드의 신뢰성을 높이고, 버그를 미리 발견하여 안정적인 소프트웨어를 만드는 데 필수적입니다."
+  },
+  {
+    "id": "day27-concept-01",
+    "kind": "concept",
+    "md": "# 테스팅 (Testing)의 중요성과 종류\n\n**테스팅**은 소프트웨어의 품질을 보장하고, 개발 과정에서 발생할 수 있는 문제를 조기에 발견하기 위한 활동입니다. 코드를 변경하거나 새로운 기능을 추가할 때 기존 기능이 손상되지 않았는지 확인하는 데도 중요합니다.\n\n- **테스팅의 중요성:**\n  - **버그 발견:** 코드의 잠재적인 오류를 찾아 수정합니다.\n  - **코드 품질 향상:** 더 견고하고 안정적인 코드를 작성하도록 유도합니다.\n  - **유지보수 용이성:** 코드 변경 시 부작용을 줄이고 자신감을 줍니다.\n  - **문서화:** 테스트 코드는 코드의 동작 방식을 설명하는 좋은 문서가 됩니다.\n\n- **테스팅의 종류:**\n  - **단위 테스트 (Unit Test):** 코드의 가장 작은 단위(함수, 메서드 등)가 올바르게 작동하는지 개별적으로 검증합니다.\n  - **통합 테스트 (Integration Test):** 여러 단위가 결합되어 함께 작동할 때 올바르게 동작하는지 검증합니다.\n  - **종단 간 테스트 (End-to-End Test, E2E):** 사용자 관점에서 애플리케이션 전체 흐름이 올바르게 작동하는지 검증합니다."
+  },
+  {
+    "id": "day27-example-01",
+    "kind": "example",
+    "md": "# 단위 테스트의 기본 예시\n\n간단한 `sum` 함수에 대한 단위 테스트를 작성해 볼까요?\n\n```javascript\n// sum.js\nfunction sum(a, b) {\n  return a + b;\n}\n\n// sum.test.js (테스트 코드)\n// 가상의 테스트 프레임워크를 사용한다고 가정\n\n// 테스트 그룹 정의\ndescribe('sum 함수', () => {\n  // 개별 테스트 케이스\n  test('두 숫자의 합을 올바르게 계산해야 한다', () => {\n    expect(sum(1, 2)).toBe(3);\n  });\n\n  test('음수와 양수의 합도 올바르게 계산해야 한다', () => {\n    expect(sum(-1, 5)).toBe(4);\n  });\n\n  test('0과의 합은 자기 자신이어야 한다', () => {\n    expect(sum(0, 10)).toBe(10);\n  });\n});\n```\n\n단위 테스트는 각 기능이 독립적으로 잘 작동하는지 빠르게 확인할 수 있게 해줍니다."
+  },
+  {
+    "id": "day27-concept-02",
+    "kind": "concept",
+    "md": "# JavaScript 테스팅 프레임워크와 도구\n\nJavaScript 생태계에는 테스팅을 돕는 다양한 프레임워크와 라이브러리가 있습니다. 이들은 테스트 코드를 작성하고 실행하며 결과를 보고하는 데 필요한 기능들을 제공합니다.\n\n- **Jest:** Facebook에서 개발한 인기 있는 테스팅 프레임워크입니다. React 프로젝트에서 많이 사용되지만, 다른 JavaScript 프로젝트에서도 널리 쓰입니다. 설치가 쉽고, 빠른 실행 속도, 스냅샷 테스트 등의 기능을 제공합니다.\n- **Mocha:** 유연하고 확장 가능한 테스팅 프레임워크입니다. 다양한 어설션(assertion) 라이브러리(예: Chai)와 함께 사용됩니다.\n- **Chai:** BDD(Behavior-Driven Development) 및 TDD(Test-Driven Development) 스타일의 어설션 라이브러리로, 테스트 코드의 가독성을 높여줍니다.\n- **Cypress:** 프론트엔드 애플리케이션을 위한 종단 간(E2E) 테스트 프레임워크입니다. 실제 브라우저 환경에서 테스트를 실행하여 사용자 경험을 시뮬레이션합니다."
+  },
+  {
+    "id": "day27-example-02",
+    "kind": "example",
+    "md": "# Jest를 사용한 테스트 예시\n\nJest를 사용하여 `multiply` 함수를 테스트해 볼까요?\n\n**`multiply.js` 파일:**\n```javascript\n// multiply.js\nfunction multiply(a, b) {\n  return a * b;\n}\n\nmodule.exports = multiply; // Node.js 모듈 내보내기 방식\n```\n\n**`multiply.test.js` 파일:**\n```javascript\n// multiply.test.js\nconst multiply = require('./multiply');\n\ndescribe('multiply 함수', () => {\n  test('두 숫자의 곱을 올바르게 계산해야 한다', () => {\n    expect(multiply(2, 4)).toBe(8);\n  });\n\n  test('0을 곱하면 0이 되어야 한다', () => {\n    expect(multiply(5, 0)).toBe(0);\n  });\n\n  test('음수를 곱하면 올바른 결과가 나와야 한다', () => {\n    expect(multiply(-3, 2)).toBe(-6);\n  });\n});\n```\n\nJest는 `expect`와 `toBe`와 같은 직관적인 문법을 제공하여 테스트 코드를 쉽게 작성할 수 있게 합니다."
+  },
+  {
+    "id": "day27-quiz-01",
+    "kind": "quiz",
+    "quizId": "quiz-day27-01"
+  },
+  {
+    "id": "day27-lab-01",
+    "kind": "lab",
+    "labId": "lab-day27-01"
+  },
+  {
+    "id": "day27-review-01",
+    "kind": "review",
+    "md": "# Day 27 복습\n\n오늘은 테스팅의 중요성, 다양한 테스팅 종류, 그리고 JavaScript에서 널리 사용되는 테스팅 프레임워크(Jest, Mocha 등)에 대해 학습했습니다. 테스팅은 안정적이고 고품질의 소프트웨어를 개발하는 데 필수적인 과정입니다.\n\n다음 시간에는 '디버깅'에 대해 알아보겠습니다!"
+  }
+]

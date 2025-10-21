@@ -1,0 +1,27 @@
+[
+  {
+    "id": "day03-story-01",
+    "kind": "story",
+    "md": "# Day 3: 연산자\n\n오늘은 프로그래밍에서 값을 조작하는 데 사용되는 '연산자'에 대해 알아보겠습니다."
+  },
+  {
+    "id": "day03-concept-01",
+    "kind": "concept",
+    "md": "# 연산자 (Operator)\n\n**연산자**는 하나 이상의 피연산자에 대해 특정 연산을 수행하는 기호입니다. 산술, 할당, 비교, 논리 연산자 등이 있습니다.\n\n**예시:**\n```javascript\nlet a = 10;\nlet b = 5;\nlet sum = a + b; // 산술 연산자 (+)\nlet isEqual = (a === b); // 비교 연산자 (===)\n```"
+  },
+  {
+    "id": "day03-quiz-01",
+    "kind": "quiz",
+    "quizId": "quiz-day03-01"
+  },
+  {
+    "id": "day03-lab-01",
+    "kind": "lab",
+    "labId": "lab-day03-01"
+  },
+  {
+    "id": "day03-review-01",
+    "kind": "review",
+    "md": "# Day 3 복습\n\n오늘은 연산자의 개념과 종류에 대해 학습했습니다. 다음 시간에는 '조건문'에 대해 알아보겠습니다!"
+  }
+]

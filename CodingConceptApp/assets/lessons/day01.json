@@ -1,0 +1,32 @@
+[
+  {
+    "id": "day01-story-01",
+    "kind": "story",
+    "md": "# Day 1: 프로그래밍의 시작\n\n안녕하세요! 코딩 개념 앱에 오신 것을 환영합니다. 오늘은 프로그래밍의 가장 기본적인 개념인 '변수'에 대해 알아보겠습니다. 변수는 데이터를 담는 상자라고 생각하면 쉬워요."
+  },
+  {
+    "id": "day01-concept-01",
+    "kind": "concept",
+    "md": "# 변수 (Variable)\n\n**변수**는 데이터를 저장하는 메모리 공간에 붙여진 이름입니다. 프로그램이 실행되는 동안 값이 변할 수 있습니다.\n\n**예시:**\n```javascript\nlet age = 30;\nlet name = \"Alice\";\n```\n\n여기서 `age`와 `name`이 변수입니다. `age`는 숫자 `30`을, `name`은 문자열 `\"Alice\"`를 저장하고 있습니다."
+  },
+  {
+    "id": "day01-example-01",
+    "kind": "example",
+    "md": "# 변수 사용 예시\n\n변수를 사용하여 간단한 계산을 해볼까요?\n\n```javascript\nlet num1 = 10;\nlet num2 = 20;\nlet sum = num1 + num2;\n\nconsole.log(sum); // 결과: 30\n```\n\n`num1`과 `num2` 변수에 저장된 값을 더하여 `sum` 변수에 저장하고 출력했습니다."
+  },
+  {
+    "id": "day01-quiz-01",
+    "kind": "quiz",
+    "quizId": "quiz-day01-01"
+  },
+  {
+    "id": "day01-lab-01",
+    "kind": "lab",
+    "labId": "lab-day01-01"
+  },
+  {
+    "id": "day01-review-01",
+    "kind": "review",
+    "md": "# Day 1 복습\n\n오늘은 변수의 개념과 사용법에 대해 학습했습니다. 변수는 데이터를 저장하는 이름 붙은 공간이며, `let` 키워드를 사용하여 선언할 수 있습니다.\n\n다음 시간에는 '자료형'에 대해 더 자세히 알아보겠습니다!"
+  }
+]

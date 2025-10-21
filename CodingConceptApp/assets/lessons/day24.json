@@ -1,0 +1,42 @@
+[
+  {
+    "id": "day24-story-01",
+    "kind": "story",
+    "md": "# Day 24: 객체의 유전자, 프로토타입\n\n우리가 부모로부터 유전자를 물려받아 특정한 특징을 가지듯이, JavaScript의 객체들도 다른 객체로부터 속성과 기능을 물려받을 수 있습니다. 이 역할을 하는 것이 바로 '프로토타입'입니다. 프로토타입은 JavaScript의 객체 지향 프로그래밍을 이해하는 데 핵심적인 개념입니다."
+  },
+  {
+    "id": "day24-concept-01",
+    "kind": "concept",
+    "md": "# 프로토타입 (Prototype)\n\n**프로토타입**은 JavaScript 객체가 다른 객체로부터 속성과 메서드를 상속받기 위한 메커니즘입니다. 모든 JavaScript 객체는 `[[Prototype]]`이라는 내부 속성을 가지며, 이 속성은 다른 객체(프로토타입 객체)를 참조합니다. 객체의 속성이나 메서드에 접근할 때, 해당 객체에 없으면 `[[Prototype]]`이 가리키는 객체에서 찾고, 거기에도 없으면 그 객체의 `[[Prototype]]`에서 찾는 식으로 연쇄적으로 탐색합니다. 이를 **프로토타입 체인(Prototype Chain)**이라고 합니다.\n\n- **`[[Prototype]]`:** 객체의 내부 속성으로, 부모 객체(프로토타입)를 참조합니다. `Object.getPrototypeOf()`로 접근할 수 있습니다.\n- **`prototype` 속성 (함수):** 함수 객체만이 가지는 속성으로, 이 함수가 `new` 키워드와 함께 생성자 함수로 호출될 때 생성되는 객체들의 `[[Prototype]]`이 될 객체를 가리킵니다."
+  },
+  {
+    "id": "day24-example-01",
+    "kind": "example",
+    "md": "# 프로토타입 체인 예시\n\n객체들이 어떻게 속성을 상속받는지 확인해 볼까요?\n\n```javascript\nconst animal = {\n  isAlive: true,\n  eat: function() {\n    console.log(\"먹이를 먹습니다.\");\n  }\n};\n\nconst dog = {\n  breed: \"골든 리트리버\",\n  bark: function() {\n    console.log(\"멍멍!\");\n  },\n  __proto__: animal // dog의 프로토타입을 animal로 설정\n};\n\nconst myDog = {\n  name: \"바둑이\",\n  __proto__: dog // myDog의 프로토타입을 dog로 설정\n};\n\nconsole.log(myDog.name);    // 결과: 바둑이 (myDog 자신의 속성)\nconsole.log(myDog.breed);   // 결과: 골든 리트리버 (dog으로부터 상속)\nconsole.log(myDog.isAlive); // 결과: true (animal로부터 상속)\nmyDog.eat();                // 결과: 먹이를 먹습니다. (animal로부터 상속된 메서드)\nmyDog.bark();               // 결과: 멍멍! (dog으로부터 상속된 메서드)\n\nconsole.log(Object.getPrototypeOf(myDog) === dog); // 결과: true\nconsole.log(Object.getPrototypeOf(dog) === animal); // 결과: true\nconsole.log(Object.getPrototypeOf(animal) === Object.prototype); // 결과: true\nconsole.log(Object.getPrototypeOf(Object.prototype) === null); // 결과: true (체인의 끝)\n```\n\n`myDog`는 `dog`의 속성을, `dog`는 `animal`의 속성을 물려받아 사용할 수 있습니다. 이것이 프로토타입 체인의 기본 동작입니다."
+  },
+  {
+    "id": "day24-concept-02",
+    "kind": "concept",
+    "md": "# 생성자 함수와 `prototype` 속성\n\n생성자 함수를 사용하여 객체를 만들 때, 생성자 함수의 `prototype` 속성이 새로 생성되는 객체들의 `[[Prototype]]`이 됩니다. 이를 통해 모든 인스턴스가 공통된 속성과 메서드를 공유할 수 있습니다.\n\n- **생성자 함수:** `new` 키워드와 함께 호출되어 객체를 생성하고 초기화하는 함수입니다.\n- **`Constructor.prototype`:** 생성자 함수의 `prototype` 속성에 추가된 속성이나 메서드는 해당 생성자로 만들어진 모든 인스턴스에서 공유됩니다."
+  },
+  {
+    "id": "day24-example-02",
+    "kind": "example",
+    "md": "# 생성자 함수와 `prototype` 예시\n\n`Person` 생성자 함수를 통해 여러 사람 객체를 만들어 볼까요?\n\n```javascript\nfunction Person(name) {\n  this.name = name;\n}\n\n// Person.prototype에 greet 메서드 추가\nPerson.prototype.greet = function() {\n  console.log(`안녕하세요, 제 이름은 ${this.name}입니다.`);\n};\n\nconst person1 = new Person(\"김철수\");\nconst person2 = new Person(\"이영희\");\n\nperson1.greet(); // 결과: 안녕하세요, 제 이름은 김철수입니다.\nperson2.greet(); // 결과: 안녕하세요, 제 이름은 이영희입니다.\n\nconsole.log(person1.greet === person2.greet); // 결과: true (같은 메서드를 공유)\nconsole.log(Object.getPrototypeOf(person1) === Person.prototype); // 결과: true\n```\n\n`greet` 메서드는 `Person.prototype`에 정의되어 있으므로, `person1`과 `person2` 모두 이 메서드를 공유하여 메모리를 효율적으로 사용할 수 있습니다."
+  },
+  {
+    "id": "day24-quiz-01",
+    "kind": "quiz",
+    "quizId": "quiz-day24-01"
+  },
+  {
+    "id": "day24-lab-01",
+    "kind": "lab",
+    "labId": "lab-day24-01"
+  },
+  {
+    "id": "day24-review-01",
+    "kind": "review",
+    "md": "# Day 24 복습\n\n오늘은 프로토타입의 개념, 프로토타입 체인, 그리고 생성자 함수와 `prototype` 속성을 통한 상속 메커니즘에 대해 학습했습니다. 프로토타입은 JavaScript의 객체 지향을 이해하는 데 매우 중요한 기초입니다.\n\n다음 시간에는 'ES6+ 문법'에 대해 알아보겠습니다!"
+  }
+]

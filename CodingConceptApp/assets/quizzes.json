@@ -1,0 +1,62 @@
+{
+  "quiz-day01-01": {
+    "id": "quiz-day01-01",
+    "type": "mcq",
+    "stem": "다음 중 변수를 올바르게 선언한 것은 무엇인가요?",
+    "choices": ["const 1name = \"Alice\";", "let age = 20;", "var function = 10;", "int count = 5;"],
+    "answer": "let age = 20;",
+    "explanation": "`let` 키워드를 사용하여 변수를 선언할 수 있습니다. 변수 이름은 숫자로 시작할 수 없으며, 예약어를 사용할 수 없습니다.",
+    "tags": ["variable", "declaration"]
+  },
+  "quiz-day01-02": {
+    "id": "quiz-day01-02",
+    "type": "cloze",
+    "stem": "JavaScript에서 변수를 선언할 때, `___` 또는 `___` 키워드를 사용합니다.",
+    "answer": ["let", "const"],
+    "explanation": "`let`과 `const`는 JavaScript에서 변수를 선언하는 데 사용되는 키워드입니다.",
+    "tags": ["variable", "declaration"]
+  },
+  "quiz-day01-03": {
+    "id": "quiz-day01-03",
+    "type": "order",
+    "stem": "다음 코드 조각을 올바른 순서로 정렬하세요.",
+    "choices": ["console.log(x);", "let x = 10;", "x = x + 5;"],
+    "answer": ["let x = 10;", "x = x + 5;", "console.log(x);"],
+    "explanation": "변수를 선언하고 값을 할당한 후, 값을 변경하고 마지막으로 출력합니다.",
+    "tags": ["order", "sequence"]
+  },
+  "quiz-day01-04": {
+    "id": "quiz-day01-04",
+    "type": "code_read",
+    "stem": "다음 JavaScript 코드의 실행 결과는 무엇인가요?\n\n```javascript\nfunction greet(name) {\n  return \"Hello, \" + name + \"!\";\n}\nconsole.log(greet(\"World\"));\n```",
+    "answer": "Hello, World!",
+    "explanation": "`greet` 함수는 주어진 이름을 사용하여 환영 메시지를 반환합니다. \"World\"를 인자로 전달하면 \"Hello, World!\"가 반환됩니다.",
+    "tags": ["code_read", "function"]
+  },
+  "quiz-day02-01": {
+    "id": "quiz-day02-01",
+    "type": "mcq",
+    "stem": "다음 중 숫자형 변수를 올바르게 선언한 것은 무엇인가요?",
+    "choices": ["let name = \"John\";", "let age = 25;", "let isActive = false;", "let fruits = [\"apple\", \"banana\"];"],
+    "answer": "let age = 25;",
+    "explanation": "`let age = 25;`는 숫자형 변수를 올바르게 선언한 예시입니다.",
+    "tags": ["variable", "data type", "number"]
+  },
+  "quiz-day03-01":
+  {
+    "id": "quiz-day03-01",
+    "type": "code_read",
+    "stem": "다음 JavaScript 코드의 실행 결과는 무엇인가요?\n\n```javascript\nlet x = 10;\nlet y = 3;\nconsole.log(x % y);\n```",
+    "answer": "1",
+    "explanation": "`%` 연산자는 나눗셈의 나머지를 반환합니다. 10을 3으로 나누면 나머지는 1입니다.",
+    "tags": ["operator", "arithmetic"]
+  },
+  "quiz-day04-01": {
+    "id": "quiz-day04-01",
+    "type": "cloze",
+    "stem": "조건문에서 `___` 키워드는 특정 조건이 참일 때 코드 블록을 실행합니다.",
+    "answer": ["if"],
+    "explanation": "`if` 키워드는 조건문에서 특정 조건이 참일 때 코드 블록을 실행하는 데 사용됩니다.",
+    "tags": ["conditional", "if"]
+  }
+}

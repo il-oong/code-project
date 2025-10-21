@@ -1,0 +1,27 @@
+[
+  {
+    "id": "day04-story-01",
+    "kind": "story",
+    "md": "# Day 4: 조건문\n\n오늘은 프로그램의 흐름을 제어하는 '조건문'에 대해 알아보겠습니다."
+  },
+  {
+    "id": "day04-concept-01",
+    "kind": "concept",
+    "md": "# 조건문 (Conditional Statement)\n\n**조건문**은 특정 조건에 따라 다른 코드 블록을 실행하도록 하는 문법입니다. `if`, `else if`, `else` 등이 있습니다.\n\n**예시:**\n```javascript\nlet score = 85;\nif (score >= 90) {\n  console.log(\"A학점\");\n} else if (score >= 80) {\n  console.log(\"B학점\");\n} else {\n  console.log(\"C학점\");\n}\n```"
+  },
+  {
+    "id": "day04-quiz-01",
+    "kind": "quiz",
+    "quizId": "quiz-day04-01"
+  },
+  {
+    "id": "day04-lab-01",
+    "kind": "lab",
+    "labId": "lab-day04-01"
+  },
+  {
+    "id": "day04-review-01",
+    "kind": "review",
+    "md": "# Day 4 복습\n\n오늘은 조건문의 개념과 사용법에 대해 학습했습니다. 다음 시간에는 '반복문'에 대해 알아보겠습니다!"
+  }
+]

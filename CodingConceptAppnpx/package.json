@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "expo": "^54.0.15",
+    "install": "^0.13.0"
+  }
+}

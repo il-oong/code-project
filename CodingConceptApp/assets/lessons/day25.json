@@ -1,0 +1,42 @@
+[
+  {
+    "id": "day25-story-01",
+    "kind": "story",
+    "md": "# Day 25: 더 편리하고 강력해진 JavaScript, ES6+ 문법\n\nJavaScript는 끊임없이 발전하며 새로운 기능들을 추가하고 있습니다. 특히 2015년에 발표된 ECMAScript 6 (ES6 또는 ES2015)는 JavaScript에 혁신적인 변화를 가져왔습니다. 마치 스마트폰이 새로운 기능들로 더욱 편리해지듯이, ES6+ 문법은 코드를 더 간결하고 효율적으로 작성할 수 있게 해줍니다."
+  },
+  {
+    "id": "day25-concept-01",
+    "kind": "concept",
+    "md": "# ES6+ 주요 문법: `let`, `const`, 화살표 함수\n\nES6부터는 변수 선언 방식과 함수 정의 방식에 큰 변화가 생겼습니다.\n\n- **`let`과 `const`:** 기존의 `var` 키워드를 대체하는 새로운 변수 선언 방식입니다.\n  - `let`: 블록 스코프 변수를 선언하며, 재할당이 가능합니다.\n  - `const`: 블록 스코프 상수를 선언하며, 한 번 할당하면 재할당할 수 없습니다. (객체의 내부 속성은 변경 가능)\n- **화살표 함수 (Arrow Functions):** 함수를 더욱 간결하게 정의할 수 있는 새로운 문법입니다. 특히 콜백 함수에서 유용하게 사용됩니다."
+  },
+  {
+    "id": "day25-example-01",
+    "kind": "example",
+    "md": "# `let`, `const`, 화살표 함수 예시\n\n```javascript\n// let과 const\nlet count = 0;\ncount = 1; // 재할당 가능\nconsole.log(count); // 결과: 1\n\nconst MAX_VALUE = 100;\n// MAX_VALUE = 200; // 오류: 상수는 재할당 불가\n\nconst person = { name: \"Alice\" };\nperson.name = \"Bob\"; // 객체 내부 속성은 변경 가능\nconsole.log(person.name); // 결과: Bob\n\n// 화살표 함수\nconst add = (a, b) => a + b;\nconsole.log(add(2, 3)); // 결과: 5\n\nconst greet = name => `안녕하세요, ${name}님!`; // 매개변수가 하나일 때 괄호 생략 가능\nconsole.log(greet(\"철수\")); // 결과: 안녕하세요, 철수님!\n\nconst sayHello = () => console.log(\"Hello!\"); // 매개변수가 없을 때 빈 괄호\nsayHello(); // 결과: Hello!\n```\n\n`let`과 `const`는 스코프 관리를 명확하게 해주며, 화살표 함수는 코드를 더 읽기 쉽게 만듭니다."
+  },
+  {
+    "id": "day25-concept-02",
+    "kind": "concept",
+    "md": "# ES6+ 주요 문법: 템플릿 리터럴, 비구조화 할당, 클래스\n\nES6+는 문자열 처리, 데이터 추출, 객체 지향 프로그래밍을 위한 강력한 기능들도 제공합니다.\n\n- **템플릿 리터럴 (Template Literals):** 백틱(`` ` ``)을 사용하여 문자열 내부에 변수나 표현식을 쉽게 삽입할 수 있습니다.\n- **비구조화 할당 (Destructuring Assignment):** 배열이나 객체의 속성을 해체하여 개별 변수에 할당할 수 있는 편리한 문법입니다.\n- **클래스 (Classes):** 객체 지향 프로그래밍을 위한 문법적 설탕(syntactic sugar)으로, 객체 생성자 함수보다 더 명확하고 간결하게 객체를 정의할 수 있게 해줍니다."
+  },
+  {
+    "id": "day25-example-02",
+    "kind": "example",
+    "md": "# 템플릿 리터럴, 비구조화 할당, 클래스 예시\n\n```javascript\n// 템플릿 리터럴\nconst name = \"영희\";\nconst age = 22;\nconsole.log(`안녕 ${name}, 너의 나이는 ${age}살 이다!`);\n// 결과: 안녕 영희, 너의 나이는 22살 이다!\n\n// 비구조화 할당 (객체)\nconst user = { firstName: \"김\", lastName: \"철수\", job: \"개발자\" };\nconst { firstName, lastName } = user;\nconsole.log(`${firstName}${lastName}`); // 결과: 김철수\n\n// 비구조화 할당 (배열)\nconst colors = [\"빨강\", \"초록\", \"파랑\"];\nconst [firstColor, secondColor] = colors;\nconsole.log(firstColor); // 결과: 빨강\n\n// 클래스\nclass Animal {\n  constructor(name) {\n    this.name = name;\n  }\n  speak() {\n    console.log(`${this.name}가 소리를 냅니다.`);\n  }\n}\n\nclass Dog extends Animal {\n  constructor(name, breed) {\n    super(name);\n    this.breed = breed;\n  }\n  speak() {\n    console.log(`${this.name} (${this.breed})가 멍멍 짖습니다.`);\n  }\n}\n\nconst myAnimal = new Animal(\"동물\");\nmyAnimal.speak(); // 결과: 동물이 소리를 냅니다.\nconst myDog = new Dog(\"바둑이\", \"진돗개\");\nmyDog.speak(); // 결과: 바둑이 (진돗개)가 멍멍 짖습니다.\n```\n\n이 외에도 ES6+에는 `Promise`, `import/export`, `Rest/Spread` 연산자 등 다양한 유용한 기능들이 추가되었습니다."
+  },
+  {
+    "id": "day25-quiz-01",
+    "kind": "quiz",
+    "quizId": "quiz-day25-01"
+  },
+  {
+    "id": "day25-lab-01",
+    "kind": "lab",
+    "labId": "lab-day25-01"
+  },
+  {
+    "id": "day25-review-01",
+    "kind": "review",
+    "md": "# Day 25 복습\n\n오늘은 ES6+의 주요 문법인 `let`, `const`, 화살표 함수, 템플릿 리터럴, 비구조화 할당, 클래스에 대해 학습했습니다. 이 새로운 문법들은 JavaScript 코드를 더욱 현대적이고 효율적으로 작성하는 데 필수적입니다.\n\n다음 시간에는 '모던 JavaScript 개발 환경'에 대해 알아보겠습니다!"
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "lab-day01-01": {
+    "id": "lab-day01-01",
+    "type": "js-sandbox",
+    "starterCode": "function add(a, b) {\n  // 여기에 코드를 작성하세요\n}\n\n// console.log(add(1, 2)); // 이 부분은 사용자가 직접 작성하도록 유도\n",
+    "tests": "expect(add(1, 2)).toBe(3);"
+  },
+  "lab-day01-02": {
+    "id": "lab-day01-02",
+    "type": "dom-mini",
+    "starterCode": "<!-- index.html -->\n<div id=\"app\"></div>\n\n// script.js\ndocument.getElementById('app').innerHTML = '<h1>Hello DOM!</h1>';",
+    "tests": ""
+  },
+  "lab-day02-01": {
+    "id": "lab-day02-01",
+    "type": "js-sandbox",
+    "starterCode": "function multiply(a, b) {\n  // 여기에 코드를 작성하세요\n}\n\n// console.log(multiply(3, 4));",
+    "tests": "expect(multiply(3, 4)).toBe(12);"
+  },
+  "lab-day03-01": {
+    "id": "lab-day03-01",
+    "type": "js-sandbox",
+    "starterCode": "function isEven(num) {\n  // 여기에 코드를 작성하세요\n}\n\n// console.log(isEven(4));",
+    "tests": "expect(isEven(4)).toBe(true); expect(isEven(7)).toBe(false);"
+  },
+  "lab-day04-01": {
+    "id": "lab-day04-01",
+    "type": "js-sandbox",
+    "starterCode": "function checkAge(age) {\n  // 여기에 코드를 작성하세요\n}\n\n// console.log(checkAge(20));",
+    "tests": "expect(checkAge(20)).toBe(\"성인\"); expect(checkAge(15)).toBe(\"미성년자\");"
+  }
+}
