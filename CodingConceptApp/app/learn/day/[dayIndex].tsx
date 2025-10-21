@@ -6,8 +6,6 @@ import CardStack from '../../../components/learn/CardStack';
 import QuizFooter from '../../../components/learn/QuizFooter';
 import LabPlayer from '../../../components/learn/LabPlayer';
 import { useSessionStore } from '../../../store/useSessionStore';
-import { LabExecutionResult, getLab } from '../../../lib/lab/engine';
-import { getQuiz } from '../../../lib/quiz/engine';
 import { Card } from '../../../types';
 
 export default function DayDetail() {
@@ -17,7 +15,7 @@ export default function DayDetail() {
 
   const {
     dayIndex: sessionDayIndex,
-    cards, // useSessionStore에서 cards 상태를 직접 가져옴
+    cards,
     currentCardIndex,
     elapsedSec,
     isQuizSubmitted,
@@ -39,6 +37,8 @@ export default function DayDetail() {
     toggleSound, // 사운드 토글 액션 가져옴
     nextNotificationTime, // 다음 알림 시간 가져옴
     setNextNotificationTime, // 다음 알림 시간 설정 액션 가져옴
+    totalDays, // 전체 Day 수 가져옴
+    resetCards, // cards 상태를 초기화하는 액션 추가
   } = useSessionStore();
 
   const [loading, setLoading] = useState(true);
@@ -46,15 +46,27 @@ export default function DayDetail() {
   const [showExplanation, setShowExplanation] = useState(false); // 해설 표시 상태 추가
 
   useEffect(() => {
+    if (isNaN(dayIndex) || dayIndex < 1 || dayIndex > totalDays) {
+      console.log(`Invalid dayIndex: ${dayIndex}. Redirecting to progress.`);
+      router.replace('/progress');
+      return;
+    }
+
     const initializeSession = async () => {
-      console.log("Initializing session for day:", dayIndex); // 디버그 로그
       setLoading(true);
-      await start(dayIndex); // 세션 시작 (cards 로드)
+      await start(dayIndex);
       setLoading(false);
-      console.log("Session initialized. Cards loaded:", cards.length); // 디버그 로그 (cards 상태를 직접 사용)
     };
-    initializeSession();
-  }, [dayIndex, start]); // dayIndex가 변경될 때마다 세션 초기화
+
+    // URL의 dayIndex와 스토어의 dayIndex가 다를 때만 세션을 새로 시작합니다.
+    // 이렇게 하면 불필요한 재실행을 막고, finish() 호출 후 다음 날로 넘어갈 때 정상적으로 초기화됩니다.
+    if (dayIndex !== sessionDayIndex) {
+      initializeSession();
+    } else {
+      // 이미 올바른 세션이 로드된 경우 로딩 상태만 해제합니다.
+      setLoading(false);
+    }
+  }, [dayIndex, sessionDayIndex, start, totalDays, router]);
 
   useEffect(() => {
     if (sessionDayIndex !== null && !loading) {
@@ -67,7 +79,7 @@ export default function DayDetail() {
   }, [sessionDayIndex, loading]);
 
   const currentCard = cards[currentCardIndex]; // enrichedCards 대신 cards를 직접 사용
-  const isLastCard = currentCardIndex === cards.length - 1; // enrichedCards.length 대신 cards.length 사용
+  const isLastCard = cards.length > 0 && currentCardIndex === cards.length - 1;
   const isFirstCard = currentCardIndex === 0;
   const isCurrentCardQuiz = currentCard?.kind === 'quiz';
   const isCurrentCardLab = currentCard?.kind === 'lab';
@@ -100,8 +112,13 @@ export default function DayDetail() {
       console.log("Attempting to finish session and navigate to next day."); // 디버그 로그
       await finish();
       const nextDay = dayIndex + 1;
-      console.log(`Navigating to /learn/day/${nextDay}`); // 디버그 로그
-      router.push(`/learn/day/${nextDay}`);
+      if (nextDay <= totalDays) {
+        console.log(`Navigating to /learn/day/${nextDay}`); // 디버그 로그
+        router.push(`/learn/day/${nextDay}`);
+      } else {
+        console.log("All days completed. Navigating to progress screen."); // 디버그 로그
+        router.push('/progress'); // 모든 Day를 완료하면 progress 화면으로 이동
+      }
     } else {
       nextCard();
     }
@@ -116,7 +133,7 @@ export default function DayDetail() {
     // TODO: 일시정지 로직 구현
   };
 
-  if (loading || sessionDayIndex === null) {
+  if (loading) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="#0000ff" />
@@ -125,7 +142,7 @@ export default function DayDetail() {
     );
   }
 
-  if (cards.length === 0) {
+  if (cards.length === 0 && !loading) {
     return (
       <View style={styles.loadingContainer}>
         <Text>학습 콘텐츠가 없습니다.</Text>
@@ -135,12 +152,14 @@ export default function DayDetail() {
 
   return (
     <SafeAreaView style={styles.fullScreen}>
-      <LessonHeader
-        dayIndex={sessionDayIndex}
-        remainingTime={remainingTime}
-        progress={cards.length > 0 ? (currentCardIndex + 1) / cards.length : 0}
-        onPause={handlePause}
-      />
+      {sessionDayIndex !== null && (
+        <LessonHeader
+          dayIndex={sessionDayIndex}
+          remainingTime={remainingTime}
+          progress={cards.length > 0 ? (currentCardIndex + 1) / cards.length : 0}
+          onPause={handlePause}
+        />
+      )}
       <View style={styles.cardStackContainer}>
         {isCurrentCardLab && currentCard?.labId && currentCard?.labData ? (
           <LabPlayer
@@ -172,6 +191,7 @@ export default function DayDetail() {
         onToggleSound={toggleSound} // 사운드 토글 액션 전달
         isSoundOn={isSoundOn} // 사운드 상태 전달
         nextNotificationTime={nextNotificationTime} // 다음 알림 시간 전달
+        isLoading={loading} // 로딩 상태 전달
       />
       {isQuizSubmitted && quizResult && (
         <View style={styles.quizResultContainer}>

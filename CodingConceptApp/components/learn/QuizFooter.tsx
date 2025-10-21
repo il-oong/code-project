@@ -17,6 +17,7 @@ interface QuizFooterProps {
   onToggleSound: () => void; // 사운드 토글 함수
   isSoundOn: boolean; // 사운드 상태
   nextNotificationTime: string; // 다음 알림 시간
+  isLoading?: boolean; // 로딩 상태 추가
 }
 
 export default function QuizFooter({
@@ -34,27 +35,28 @@ export default function QuizFooter({
   onToggleSound,
   isSoundOn,
   nextNotificationTime,
+  isLoading = false, // 기본값 설정
 }: QuizFooterProps) {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={onPrev} disabled={!canGoPrev} style={styles.button}>
-        <Text style={[styles.buttonText, !canGoPrev && styles.disabledText]}>이전</Text>
+      <TouchableOpacity onPress={onPrev} disabled={!canGoPrev || isLoading} style={styles.button}>
+        <Text style={[styles.buttonText, (!canGoPrev || isLoading) && styles.disabledText]}>이전</Text>
       </TouchableOpacity>
 
       {isQuiz && !isSubmitted && (
-        <TouchableOpacity onPress={onSubmit} style={[styles.button, styles.submitButton]}>
+        <TouchableOpacity onPress={onSubmit} disabled={isLoading} style={[styles.button, styles.submitButton]}>
           <Text style={styles.buttonText}>제출</Text>
         </TouchableOpacity>
       )}
 
       {isQuiz && isSubmitted && showExplanationButton && (
-        <TouchableOpacity onPress={onShowExplanation} style={[styles.button, styles.explanationButton]}>
+        <TouchableOpacity onPress={onShowExplanation} disabled={isLoading} style={[styles.button, styles.explanationButton]}>
           <Text style={styles.buttonText}>해설 보기</Text>
         </TouchableOpacity>
       )}
 
-      <TouchableOpacity onPress={onNext} disabled={!canGoNext} style={styles.button}>
-        <Text style={[styles.buttonText, !canGoNext && styles.disabledText]}>다음</Text>
+      <TouchableOpacity onPress={onNext} disabled={!canGoNext || isLoading} style={styles.button}>
+        <Text style={[styles.buttonText, (!canGoNext || isLoading) && styles.disabledText]}>다음</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={onToggleBookmark} style={styles.iconButton}>

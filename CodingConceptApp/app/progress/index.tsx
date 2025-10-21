@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, ScrollView } from 'react-native';
 import { Dimensions } from 'react-native'; // Dimensions 임포트
+
+// Prop view to filter out responder props and prevent warnings
+const PropFilteringView = (props: any) => {
+  const { onStartShouldSetResponder, onResponderRelease, onResponderTerminate, ...rest } = props;
+  return <View {...rest} />;
+};
 import { Calendar } from 'react-native-calendars';
-import { LineChart as RNLineChart } from 'react-native-chart-kit'; // LineChart 임포트
+import { LineChart } from 'react-native-chart-kit'; // LineChart 임포트
 import { useStreakRewardStore } from '../../store/useStreakRewardStore';
 import { useSessionStore } from '../../store/useSessionStore'; // useSessionStore 임포트
-
-const LineChart: any = RNLineChart; // LineChart를 any로 캐스팅하여 타입 오류 회피
 
 // react-native-calendars의 onDayPress 콜백 인자 타입을 위한 인터페이스 정의
 interface DayObject {
@@ -123,9 +127,9 @@ export default function ProgressIndex() {
         </View>
 
         {/* 정확도 차트 섹션 */}
-        <View style={styles.section}>
+        <PropFilteringView style={styles.section}>
           <Text style={styles.sectionTitle}>정확도 차트</Text>
-          <LineChart // any로 캐스팅된 LineChart 사용
+          <LineChart
             data={{
               labels: ['1주차', '2주차', '3주차', '4주차', '5주차', '6주차'],
               datasets: [
@@ -168,7 +172,7 @@ export default function ProgressIndex() {
               borderRadius: 16,
             }}
           />
-        </View>
+        </PropFilteringView>
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>약점 토픽 추천</Text>

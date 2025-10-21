@@ -1,26 +1,17 @@
-import { useEffect } from 'react';
-import { router } from 'expo-router';
+import { Redirect } from 'expo-router';
 import { useSessionStore } from '../../store/useSessionStore';
 
+/**
+ * 이 컴포넌트는 사용자를 올바른 학습 페이지로 리다이렉트하는 역할만 수행합니다.
+ * Expo Router의 Redirect 컴포넌트를 사용하여 네비게이션 타이밍 문제를 해결합니다.
+ */
 export default function LearnIndex() {
-  const { dayIndex, start } = useSessionStore();
+  // 스토어에서 현재 dayIndex를 동기적으로 읽어옵니다.
+  const { dayIndex } = useSessionStore.getState();
 
-  useEffect(() => {
-    const initializeAndRedirect = async () => {
-      let targetDayIndex;
-      if (dayIndex === null) {
-        // dayIndex가 null이면 Day 1으로 시작
-        await start(1); // dayIndex를 1로 설정
-        targetDayIndex = 1;
-      } else {
-        // 이미 dayIndex가 설정되어 있으면 다음 Day로 이동
-        targetDayIndex = dayIndex + 1;
-      }
-      router.replace(`/learn/day/${targetDayIndex}`);
-    };
+  // 활성화된 세션이 없으면 Day 1로, 있으면 마지막으로 활성화된 Day로 이동 경로를 설정합니다.
+  const targetDayIndex = dayIndex === null ? 1 : dayIndex;
 
-    initializeAndRedirect();
-  }, [dayIndex, start]); // dayIndex 또는 start 함수가 변경될 때마다 실행
-
-  return null; // 리다이렉트만 수행하므로 UI는 렌더링하지 않음
+  // 계산된 경로로 리다이렉트하는 컴포넌트를 렌더링합니다.
+  return <Redirect href={`/learn/day/${targetDayIndex}`} />;
 }
